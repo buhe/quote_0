@@ -25,11 +25,11 @@ export default async function handler(req, res) {
       const response = await fetch(url, options);
       const data = await response.json();
       console.log(data);
+      return res.status(200).json(data);
     } catch (error) {
       console.error(error);
     }
-    return res.status(200).json(data);
-    } catch (e) {
+  } catch (e) {
     console.error(e);
     res.status(500).send(e.message);
   }
