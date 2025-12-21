@@ -6,7 +6,7 @@
   },
   "crons": [
     {
-      "path": "api/wiki",
+      "path": "/api/wiki",
       "schedule": "*/10 * * * *"
     }
   ]
