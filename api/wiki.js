@@ -1,4 +1,3 @@
-import { buildRss } from '../lib/builder.js';
 
 // Vercel 的 Serverless Function 默认超时 10s，足够
 export default async function handler(req, res) {
