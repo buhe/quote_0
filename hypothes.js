@@ -12,7 +12,7 @@ export const handler = async (event) => {
                 Authorization: 'Bearer 6879-bJdzXWQSCno-ONUfjttuoz0ytLffeK3-sSigHJKUfmg'
             }
         };
-
+        // console.log(`url: ${url}`)
         const response = await fetch(url, options);
         const data = await response.json();
         const rows = data.rows;
@@ -21,8 +21,9 @@ export const handler = async (event) => {
 
         const nowItem = rows[hour % rows.length];
         const title = nowItem.document.title;
-        const exact = nowItem.target.selector[2].exact;
-        const link = nowItem.target.source;
+        // console.log(`title: ${title}`)
+        const exact = nowItem.target[0].selector[2].exact;
+        const link = nowItem.target[0].source;
 
         const url2 = 'https://dot.mindreset.tech/api/authV2/open/device/48F6EE55B498/text';
         const options2 = {
