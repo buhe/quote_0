@@ -1,0 +1,1 @@
+## Lambda + Quote/0
