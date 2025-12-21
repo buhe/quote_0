@@ -17,12 +17,12 @@ export default async function handler(req, res) {
     // 2. 拼 RSS
     const xml = buildRss(items);
 
-    // 3. 写文件（Vercel 的 /public 会被静态托管）
-    const out = path.join(process.cwd(), 'public', 'rss.xml');
-    fs.writeFileSync(out, xml, 'utf8');
-
-    res.status(200).json({ ok: true, items: items.length });
-  } catch (e) {
+    // 3
+    res.setHeader('Content-Type', 'application/rss+xml; charset=utf-8');
+    // 可选：让阅读器/缓存知道多久更新一次
+    res.setHeader('Cache-Control', 's-maxage=600, stale-while-revalidate');
+    return res.status(200).send(xml); 
+    } catch (e) {
     console.error(e);
     res.status(500).json({ error: e.message });
   }
