@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "api/wiki.js": {
+      "maxDuration": 10
+    }
+  },
+  "crons": [
+    {
+      "path": "api/wiki",
+      "schedule": "0 * * * *"
+    }
+  ]
+}
