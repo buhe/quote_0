@@ -1,5 +1,3 @@
-import fs from 'fs';
-import path from 'path';
 import { buildRss } from '../lib/builder.js';
 
 // Vercel 的 Serverless Function 默认超时 10s，足够
@@ -14,14 +12,24 @@ export default async function handler(req, res) {
             url: content_urls.desktop.page
           }))
 
-    // 2. 拼 RSS
-    const xml = buildRss(items);
+    const url = 'https://dot.mindreset.tech/api/authV2/open/device/48F6EE55B498/text';
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer dot_app_rNdgyLmXPksJdkFwBrjPqguonlTXIZSJgHRTDjvhjgIagfmlcONIsXpTAxkYESwj'
+      },
+      body: `{"refreshNow":true,"title":"${items.title}","message":"${items.extract}","link":"${items.url}"}`
+    };
 
-    // 3
-    res.setHeader('Content-Type', 'application/rss+xml; charset=utf-8');
-    // 可选：让阅读器/缓存知道多久更新一次
-    res.setHeader('Cache-Control', 's-maxage=600, stale-while-revalidate');
-    return res.status(200).send(xml); 
+    try {
+      const response = await fetch(url, options);
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+    return res.status(200).json(data);
     } catch (e) {
     console.error(e);
     res.status(500).send(e.message);
