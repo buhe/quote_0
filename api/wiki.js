@@ -5,18 +5,14 @@ import { buildRss } from '../lib/builder.js';
 // Vercel 的 Serverless Function 默认超时 10s，足够
 export default async function handler(req, res) {
   try {
-    // 1. 拉 5 条随机摘要
-    const items = await Promise.all(
-      Array.from({ length: 5 }).map(() =>
-        fetch('https://en.wikipedia.org/api/rest_v1/page/random/summary')
+    // 1. 拉 1 条随机摘要
+    const items = await fetch('https://zh.wikipedia.org/api/rest_v1/page/random/summary')
           .then(r => r.json())
           .then(({ title, extract, content_urls }) => ({
             title,
             extract,
             url: content_urls.desktop.page
           }))
-      )
-    );
 
     // 2. 拼 RSS
     const xml = buildRss(items);
