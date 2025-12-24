@@ -32,7 +32,7 @@ export const handler = async (event) => {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer dot_app_rNdgyLmXPksJdkFwBrjPqguonlTXIZSJgHRTDjvhjgIagfmlcONIsXpTAxkYESwj'
             },
-            body: `{"refreshNow":false,"title":"${title}","message":"${exact}","link":"${link}","taskKey":"5V1rimAXEqOd"}`
+            body: `{"refreshNow":false,"taskKey":"gFQrtWcXHIOk","title":"${title}","message":"${exact}","link":"${link}"}`
         };
 
         const response2 = await fetch(url2, options2);
