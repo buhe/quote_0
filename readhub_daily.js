@@ -38,7 +38,7 @@
     //     rawTitle = blog['title']
     //      rawSummary = blog['summary'].replace('... ', '')
 
-export const handler = async () => {
+export const handler = async (event) => {
   /* ---------- 工具 ---------- */
   // 当天 00:00:00 的 GMT 时间戳（秒）
   const getGMTDayTimestamp = () => {
