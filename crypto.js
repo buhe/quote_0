@@ -291,7 +291,7 @@ export const handler = async (event) => {
   try {
     const key   = 'dot_app_rNdgyLmXPksJdkFwBrjPqguonlTXIZSJgHRTDjvhjgIagfmlcONIsXpTAxkYESwj';
     const title = 'Crypto Prices';
-    const taskKey = '';
+    const taskKey = '28GqT6T5kEDV';
     const prices = await Promise.all(
       ['BTCUSDT','ETHUSDT','USDCUSDT'].map(async s => {
         const t = await fetch(`https://api.binance.com/api/v3/ticker/24hr?symbol=${s}`).then(r => r.json());
@@ -302,6 +302,7 @@ export const handler = async (event) => {
 
     const body = JSON.stringify({
       refreshNow: false,
+      taskKey,
       title,
       message: prices.join('\n'),
       signature: `Updated at ${new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})}`
