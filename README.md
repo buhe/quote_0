@@ -4,5 +4,5 @@
 
 - Random wikipedia
 - Recent 12 annotation by hypothes.is
-- TODO: readhub daily
-- TODO: crypto prices
+- Readhub daily
+- Crypto prices
