@@ -5,4 +5,4 @@
 - Random wikipedia
 - Recent 12 annotation by hypothes.is
 - Readhub daily
-- Crypto prices
+- Crypto prices(Make sure at ap-southeast-2 region)
