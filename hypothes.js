@@ -33,7 +33,7 @@ export const handler = async (event) => {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer dot_app_rNdgyLmXPksJdkFwBrjPqguonlTXIZSJgHRTDjvhjgIagfmlcONIsXpTAxkYESwj'
             },
-            body: `{"refreshNow":false,"signature":"Created at ${signature}","title":"${title}","message":"${exact}","link":"${link}"}`
+            body: `{"refreshNow":false,"signature":"Created at ${signature}","title":"${title}","message":"${exact}","taskKey":"gFQrtWcXHIOk","link":"${link}"}`
         };
 
         const response2 = await fetch(url2, options2);
