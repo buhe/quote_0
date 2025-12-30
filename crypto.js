@@ -7,7 +7,7 @@ export const handler = async (event) => {
       ['BTCUSDT','ETHUSDT','USDCUSDT'].map(async s => {
         const t = await fetch(`https://api.binance.com/api/v3/ticker/24hr?symbol=${s}`).then(r => r.json());
         const name = s.replace('USDT','');
-        return `${name} $${Number(t.lastPrice).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})} ${t.priceChangePercent>=0?' up ':' down '}${Number(t.priceChangePercent).toFixed(1)}%`;
+        return `${name} $${Number(t.lastPrice).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})} ${t.priceChangePercent>=0?' 涨 ':' 跌 '}${Number(t.priceChangePercent).toFixed(1)}%`;
       })
     );
 
