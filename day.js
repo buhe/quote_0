@@ -1,6 +1,30 @@
 exports.handler = async (event) => {
     // Use Intl.DateTimeFormat to reliably get the time in Asia/Shanghai (UTC+8)
     const now = new Date();
+
+    // Print current time in Asia/Shanghai
+    const printFormatter = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Asia/Shanghai',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    });
+    const p = printFormatter.formatToParts(now);
+    const getVal = (type) => p.find(x => x.type === type).value;
+    
+    // Get weekday
+    const weekdayFormatter = new Intl.DateTimeFormat('zh-CN', {
+        timeZone: 'Asia/Shanghai',
+        weekday: 'long'
+    });
+    const weekday = weekdayFormatter.format(now);
+    
+    console.log(`${getVal('year')}-${getVal('month')}-${getVal('day')} ${getVal('hour')}:${getVal('minute')}:${getVal('second')} ${weekday}`);
+
     const formatter = new Intl.DateTimeFormat('en-US', {
         timeZone: 'Asia/Shanghai',
         hour: 'numeric',
