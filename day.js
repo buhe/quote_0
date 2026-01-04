@@ -71,6 +71,17 @@ exports.handler = async (event) => {
     const formattedPercentage = `${Math.floor(percentage)}%`;
 
     console.log(formattedPercentage);
+
+    // Life expectancy calculation
+    // Birth: 1986-06-29, Lifespan: 65 years
+    const deathDate = new Date('2051-06-29T00:00:00+08:00');
+    
+    const diffMs = deathDate - now;
+    const remainingDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    const remainingWeeks = Math.floor(remainingDays / 7);
+
+    console.log(`Remaining Days: ${remainingDays}`);
+    console.log(`Remaining Weeks: ${remainingWeeks}`);
     
     return formattedPercentage;
 };
