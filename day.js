@@ -23,8 +23,6 @@ exports.handler = async (event) => {
     });
     const weekday = weekdayFormatter.format(now);
     
-    console.log(`${getVal('year')}-${getVal('month')}-${getVal('day')} ${getVal('hour')}:${getVal('minute')}:${getVal('second')} ${weekday}`);
-
     const formatter = new Intl.DateTimeFormat('en-US', {
         timeZone: 'Asia/Shanghai',
         hour: 'numeric',
@@ -70,7 +68,7 @@ exports.handler = async (event) => {
     // Use Math.floor to show integer percentage, or toFixed(0)
     const formattedPercentage = `${Math.floor(percentage)}%`;
 
-    console.log(formattedPercentage);
+    console.log(`Burned working hours: ${formattedPercentage}`);
 
     // Life expectancy calculation
     // Birth: 1986-06-29, Lifespan: 65 years
@@ -83,7 +81,37 @@ exports.handler = async (event) => {
     console.log(`Remaining Days: ${remainingDays}`);
     console.log(`Remaining Weeks: ${remainingWeeks}`);
     
-    return formattedPercentage;
+    const key   = 'dot_app_rNdgyLmXPksJdkFwBrjPqguonlTXIZSJgHRTDjvhjgIagfmlcONIsXpTAxkYESwj';
+    const title = 'Progress';
+    const taskKey = 'O7wFSSkyTnev';
+    const message = `Burned working hours: ${formattedPercentage}\nRemaining Days: ${remainingDays}\nRemaining Weeks: ${remainingWeeks}`;
+    const signature = `${getVal('year')}-${getVal('month')}-${getVal('day')} ${getVal('hour')}:${getVal('minute')}:${getVal('second')} ${weekday}`;
+    console.log(signature);
+
+    const body = JSON.stringify({
+      refreshNow: true,
+      taskKey,
+      title,
+      message,
+      signature,
+    });
+
+    const res = await fetch('https://dot.mindreset.tech/api/authV2/open/device/48F6EE55B498/text', {
+      method : 'POST',
+      headers: {
+        'Authorization': `Bearer ${key}`,
+        'Content-Type' : 'application/json'
+      },
+      body
+    });
+
+    if (!res.ok) throw new Error(`Dot API ${res.status}`);
+
+    const response3 = {
+      statusCode: 200,
+      body: body
+    };
+    return response3;
 };
 
 // If running locally directly via `node day.js`
