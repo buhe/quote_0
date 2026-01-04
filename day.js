@@ -83,7 +83,7 @@ export const handler = async (event) => {
         console.log(`Remaining Weeks: ${remainingWeeks}`);
 
         const key = 'dot_app_rNdgyLmXPksJdkFwBrjPqguonlTXIZSJgHRTDjvhjgIagfmlcONIsXpTAxkYESwj';
-        const title = 'Progress';
+        const title = '>___';
         const taskKey = 'O7wFSSkyTnev';
         const message = `Burned working hours: ${formattedPercentage}\nRemaining Days: ${remainingDays}\nRemaining Weeks: ${remainingWeeks}`;
         const signature = `${getVal('year')}-${getVal('month')}-${getVal('day')} ${getVal('hour')}:${getVal('minute')}:${getVal('second')} ${weekday}`;
