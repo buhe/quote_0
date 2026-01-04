@@ -90,7 +90,7 @@ export const handler = async (event) => {
         console.log(signature);
 
         const body = JSON.stringify({
-            refreshNow: true,
+            refreshNow: false,
             taskKey,
             title,
             message,
