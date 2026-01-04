@@ -113,8 +113,3 @@ exports.handler = async (event) => {
     };
     return response3;
 };
-
-// If running locally directly via `node day.js`
-if (require.main === module) {
-    exports.handler();
-}
