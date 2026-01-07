@@ -59,7 +59,7 @@ export const handler = async (event) => {
             'Content-Type': 'application/json',
             Authorization: 'Bearer dot_app_rNdgyLmXPksJdkFwBrjPqguonlTXIZSJgHRTDjvhjgIagfmlcONIsXpTAxkYESwj'
         },
-        body: `{"refreshNow":false,"signature":"From ${nowItem.signature}","taskKey":"w172i06pcMfd","title":"${nowItem.title}","message":"${nowItem.summary}","link":"${nowItem.link}"}`
+        body: `{"refreshNow":false,"signature":"From ${nowItem.signature}","taskKey":"P5o7BW9jgYrs","title":"${nowItem.title}","message":"${nowItem.summary}","link":"${nowItem.link}"}`
     };
 
     const response2 = await fetch(url2, options2);
