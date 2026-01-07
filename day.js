@@ -88,7 +88,7 @@ export const handler = async (event) => {
         const title = (currentTotalMinutes >= breakStart && currentTotalMinutes < breakEnd)
             ? '0000000000'
             : '>'.repeat(filledCount) + '_'.repeat(10 - filledCount);
-        const taskKey = 'O7wFSSkyTnev';
+        const taskKey = 'Je0xdRDmrA9d';
         const message = `Burned working hours: ${formattedPercentage}\nRemaining Days: ${remainingDays}\nRemaining Weeks: ${remainingWeeks}`;
         const signature = `${getVal('year')}-${getVal('month')}-${getVal('day')} ${getVal('hour')}:${getVal('minute')}:${getVal('second')} ${weekday}`;
         console.log(signature);
