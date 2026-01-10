@@ -86,7 +86,7 @@ export const handler = async (event) => {
         const roundedPercentage = Math.round(percentage / 10) * 10;
         const filledCount = Math.round(roundedPercentage / 10);
         const title = (currentTotalMinutes >= breakStart && currentTotalMinutes < breakEnd)
-            ? '0000000000'
+            ? '---break---'
             : '>'.repeat(filledCount) + '_'.repeat(10 - filledCount);
         const taskKey = 'Je0xdRDmrA9d';
         const message = `Burned working hours: ${formattedPercentage}\nRemaining Days: ${remainingDays}\nRemaining Weeks: ${remainingWeeks}`;
