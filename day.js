@@ -39,12 +39,12 @@ export const handler = async (event) => {
 
         // Schedule configuration (in minutes)
         const startOfDay = 9 * 60;       // 09:00 -> 540
-        const breakStart = 14 * 60;      // 14:00 -> 840
-        const breakEnd = 17 * 60;        // 17:00 -> 1020
+        const breakStart = 13 * 60;      // 13:00 -> 780
+        const breakEnd = 16 * 60;        // 16:00 -> 960
         const endOfDay = 20 * 60;        // 20:00 -> 1200
 
-        // Total active working minutes (09:00-14:00 + 17:00-20:00)
-        // 5 hours + 3 hours = 8 hours = 480 minutes
+        // Total active working minutes (09:00-13:00 + 16:00-20:00)
+        // 4 hours + 4 hours = 8 hours = 480 minutes
         const totalDuration = (breakStart - startOfDay) + (endOfDay - breakEnd);
 
         let activeMinutes = 0;
